@@ -1,0 +1,8 @@
+## Què estava malament?
+En el codi original, la classe Ghost heretava de Character, però sobrescrivia el mètode takeDamage() per llançar una excepció (UnsupportedOperationException), ja que un fantasma no pot rebre dany físic. Això provocava que el codi fallés inesperadament si algú intentava atacar un grup de personatges genèrics.
+
+## Per què incomplia el principi?
+S'incomplia el Principi de Substitució de Liskov (LSP), la L de SOLID. Aquest principi estableix que si tenim una classe pare (Character), qualsevol classe filla (Ghost) hauria de poder substituir-la sense alterar el funcionament correcte del programa. En llançar una excepció on el pare prometia rebre dany, el Ghost trencava el contracte i no era un substitut vàlid.
+
+## Quina solució has aplicat i per què?
+He solucionat el problema afavorint la composició per sobre de l'herència mitjançant el patró de disseny Strategy. He creat una interfície DamageStrategy amb dues implementacions (NoDamage i DoDamage). Ara, la classe pare Character rep aquesta estratègia pel constructor i li delega l'acció de rebre dany. Les classes filles (Ghost i Warrior) ja no necessiten sobrescriure el mètode ni llançar excepcions; simplement passen la seva estratègia específica al constructor del pare (super(damageStrategy)). D'aquesta manera, qualsevol personatge pot rebre la crida al mètode takeDamage() amb total seguretat, respectant al 100% el principi de Liskov i fent el sistema molt més flexible.
