@@ -1,3 +1,5 @@
+package services;
+
 public class UserRegistrationService {
     private UserValidator userValidator;
     private NotificationService notificationService;

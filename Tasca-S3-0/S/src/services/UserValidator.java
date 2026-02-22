@@ -1,3 +1,5 @@
+package services;
+
 public class UserValidator {
 
     public void validateEmail(String email){

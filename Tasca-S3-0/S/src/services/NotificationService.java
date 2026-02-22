@@ -1,3 +1,5 @@
+package services;
+
 public class NotificationService {
 
     public void sendConfirmation(String email){
