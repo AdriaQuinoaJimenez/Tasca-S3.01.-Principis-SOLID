@@ -6,7 +6,7 @@ public class UserRegistrationService {
     private UserValidator userValidator;
     private NotificationService notificationService;
 
-    public UserRegistrationService(UserValidator userValidator, NotificationService notificationService) {
+    public UserRegistrationService() {
         this.userValidator = new UserValidator();
         this.notificationService = new NotificationService();
     }
